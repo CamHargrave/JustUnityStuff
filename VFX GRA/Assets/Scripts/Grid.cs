@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,12 +35,12 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
                 bool Wall = true;
 
-                if(Physics.CheckSphere(worldPoint, nodeRadius, WallMask))
+                if (Physics.CheckSphere(worldPoint, nodeRadius, WallMask))
                 {
                     Wall = false;
                 }
 
-                grid[y, x] = new Node(Wall, worldPoint, x, y);
+                grid[x,y] = new Node(Wall, worldPoint, x, y);
             }
         }
     }
@@ -50,9 +49,9 @@ public class Grid : MonoBehaviour
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        if(grid != null)
+        if (grid != null)
         {
-            foreach(Node n in grid)
+            foreach (Node n in grid)
             {
                 if (n.IsWall)
                 {
@@ -63,7 +62,7 @@ public class Grid : MonoBehaviour
                     Gizmos.color = Color.yellow;
                 }
 
-                if(FinalPath != null)
+                if (FinalPath != null)
                 {
                     if (FinalPath.Contains(n))
                     {
